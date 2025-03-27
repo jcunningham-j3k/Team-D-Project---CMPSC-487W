@@ -1,12 +1,46 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// expo install @react-navigation/native @react-navigation/bottom-tabs react-native-screens react-native-safe-area-context
+
+// npm install react-d3-gauge
+// npm install react-d3-speedometer --legacy-peer-deps
+// npm install react-native-speedometer-chart --legacy-peer-deps
+// npm install react-native-svg --legacy-peer-deps
+
+// npm install react-native-linear-gradient
+// npx expo install react-native-gifted-charts expo-linear-gradient react-native-svg
+
+
+import { StyleSheet, Text } from 'react-native';
+
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import Home from "./Screens/Home";
+import Stats from "./Screens/Stats";
+import Survey from "./Screens/Survey";
+import { NavigationContainer } from '@react-navigation/native';
+
+
+const MyTabs = createBottomTabNavigator();
+
+function MyTabsNavigation() {
+  return (
+    <MyTabs.Navigator screenOptions={{
+      tabBarActiveTintColor: '#1ed81e',
+      tabBarInactiveTintColor: 'gray',
+      tabBarStyle: { backgroundColor: 'black' },
+    }}>
+      <MyTabs.Screen name = 'Home' component={Home} options = {{headerShown: false}}/>
+      <MyTabs.Screen name = 'Stats' component = {Stats} options = {{headerShown: false}} />
+      <MyTabs.Screen name = 'Survey' component = {Survey} options = {{headerShown: false}}/>
+    </MyTabs.Navigator>
+  )
+}
 
 export default function App() {
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <MyTabsNavigation />
+    </NavigationContainer>
   );
 }
 
