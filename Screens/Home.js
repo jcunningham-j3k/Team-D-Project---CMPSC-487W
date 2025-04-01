@@ -22,8 +22,8 @@ function Home(props) {
     { label: 'M', value: 15 },
     { label: 'T', value: 10 },
     { label: 'W', value: 3 },
-    { label: 'R', value: 30 },
-    { label: 'F', value: 20 },
+    { label: 'R', value: 8 },
+    { label: 'F', value: 13 },
   ];
 
   function goToSurvey() {
@@ -33,7 +33,7 @@ function Home(props) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image source={require('../assets/LaunchBox_Logo.jpg')} style = {styles.settingsImage}></Image>
+        <Image source={require('../assets/LaunchBox_Logo.jpg')} style = {styles.image}></Image>
       </View>
       <View>
         <View style={styles.speedometer}>
@@ -41,7 +41,7 @@ function Home(props) {
         </View>
         <View style={styles.barGraph}>
           <BarGraph title = {'Total Hours'} data = {totalHours}></BarGraph>
-          <BarGraph title = {'Avg Time Spent'} data = {avgTime}></BarGraph>
+          <BarGraph title = {'Avg # of Students'} data = {avgTime}></BarGraph>
         </View>
       </View>
       <SurveyButton title='Survey' onPress = {goToSurvey}/>
@@ -49,7 +49,7 @@ function Home(props) {
     </View>
   );
 }
-
+//<MySpeedometer value={value} max={max}/>
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#ffffff',
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     alignContent: 'center',
     marginTop: 50
   },
-  settingsImage: {
+  image: {
     width: '91%',
     height: 90,
     marginLeft: 10

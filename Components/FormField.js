@@ -17,12 +17,11 @@ export default FormField;
 
 const styles = StyleSheet.create({
     formFieldContainer: {
-        marginVertical: 8,
+        marginVertical: 4,
     },
     label: {
         fontSize: 16,
-        marginBottom: 5,
-        color: 'white',
+        color: 'black',
     },
     errorLabel: {
         fontSize: 16,
@@ -35,10 +34,10 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: 'black',
         borderRadius: 4,
-        fontSize: 18,
+        fontSize: 14,
     },
     errorInput: {
-        backgroundColor: 'white',
+        backgroundColor: 'black',
         padding: 8,
         borderWidth: 1,
         borderColor: 'black',

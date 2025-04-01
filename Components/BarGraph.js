@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     color: '#007AFF',
   },
   title: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight:'bold',
     textAlign:'center'
   }

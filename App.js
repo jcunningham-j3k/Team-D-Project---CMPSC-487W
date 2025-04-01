@@ -1,12 +1,13 @@
 // expo install @react-navigation/native @react-navigation/bottom-tabs react-native-screens react-native-safe-area-context
 
-// npm install react-d3-gauge
-// npm install react-d3-speedometer --legacy-peer-deps
-// npm install react-native-speedometer-chart --legacy-peer-deps
-// npm install react-native-svg --legacy-peer-deps
-
 // npm install react-native-linear-gradient
 // npx expo install react-native-gifted-charts expo-linear-gradient react-native-svg
+
+// npm install react-gauge-chart
+// npm install firebase
+
+// npm install @react-native-picker/picker --legacy-peer-deps
+// npm install react-native-svg-charts --legacy-peer-deps
 
 
 import { StyleSheet, Text } from 'react-native';
