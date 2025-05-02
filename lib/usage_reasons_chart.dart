@@ -6,12 +6,18 @@ import 'services/firebase_service.dart';
 class UsageReasonsChart extends StatelessWidget {
   UsageReasonsChart({Key? key}) : super(key: key);
 
+  // We'll now create a larger color list to handle more dynamic categories
   final List<Color> chartColors = [
     Colors.blue,
     Colors.deepPurple,
     Colors.pinkAccent,
     Colors.lightBlue,
     Colors.amber,
+    Colors.teal,
+    Colors.green,
+    Colors.orange,
+    Colors.red,
+    Colors.indigo,
   ];
 
   @override
@@ -42,6 +48,19 @@ class UsageReasonsChart extends StatelessWidget {
         }
         
         final stats = snapshot.data!;
+        
+        // Check if there's any data to display
+        if (stats.usageReasons.isEmpty || 
+            stats.usageReasons.values.fold(0, (sum, count) => sum + count) == 0) {
+          return const Card(
+            elevation: 3,
+            child: SizedBox(
+              height: 300,
+              child: Center(child: Text('No usage data available')),
+            ),
+          );
+        }
+        
         final usageData = _prepareChartData(stats.usageReasons);
         
         return Card(
@@ -77,9 +96,9 @@ class UsageReasonsChart extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 12),
-                // Simple legend
+                // Simple legend with Wrap for better responsiveness
                 Wrap(
-                  spacing: 8,
+                  spacing: 12,
                   runSpacing: 8,
                   children: usageData.map((data) {
                     return Row(
@@ -112,17 +131,21 @@ class UsageReasonsChart extends StatelessWidget {
     List<_UsageData> result = [];
     int index = 0;
     
-    usageReasons.forEach((key, value) {
-      int percentage = total > 0 ? ((value / total) * 100).round() : 0;
+    // Sort by count descending to make chart more readable
+    var sortedEntries = usageReasons.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
+    
+    for (var entry in sortedEntries) {
+      int percentage = total > 0 ? ((entry.value / total) * 100).round() : 0;
       if (percentage > 0) {
         result.add(_UsageData(
-          name: key,
+          name: entry.key,
           value: percentage,
           color: chartColors[index % chartColors.length],
         ));
         index++;
       }
-    });
+    }
     
     return result;
   }
